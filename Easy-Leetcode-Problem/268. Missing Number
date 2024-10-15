@@ -1,0 +1,29 @@
+/*  My solution for leetcode problem 268. Missing Number */
+
+/* Leetcode problem link ==>  https://leetcode.com/problems/missing-number/description/ */
+
+/*   c++ code */
+
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+
+        int n = nums.size();
+
+        for(int i=0;i<=n;i++){
+            if(count(nums.begin(), nums.end(), i)){
+                    continue;
+            }else{
+               
+                return i;
+            }
+        }
+
+        return 1;
+
+        
+    }
+};
+
+
+/*    count()  function use to check the element present in vector nums or not */
