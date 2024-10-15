@@ -1,0 +1,36 @@
+/*  c++ solution of  Leetcode problem No - 1684. Count the Number of Consistent Strings  */
+
+
+
+
+class Solution {
+public:
+    int countConsistentStrings(string allowed, vector<string>& words) {
+        int mask =0;
+
+        for(char &ch : allowed){
+            mask |=(1 << (ch - 'a'));
+        }
+        int count=0;
+
+        for(string &word : words){
+            bool allcharpresent = true;
+
+            for(char &ch : word){
+                if(((mask >> (ch - 'a')) & 1) ==0 ){
+                    allcharpresent = false;
+                    break;
+                }else{
+                    
+                    continue;
+                }
+            }
+            if(allcharpresent == true){
+                count++;
+            }
+           
+        }
+        return count;
+        
+    }
+};
