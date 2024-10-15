@@ -1,0 +1,44 @@
+/* My Solution of Leetcode problem 125. Valid Palindrome */
+
+/*  Leetcode Problem url  === >   https://leetcode.com/problems/valid-palindrome/description/ */
+
+
+
+class Solution {
+public:
+    bool isPalindrome(string s) {
+
+        if (s.length() == 0) {
+            return false;
+        }
+        string a;
+        for (char b : s) {
+            if (isalpha(b) || isalnum(b)) {
+                a += tolower(b);
+            }
+        }
+        string c = a;
+
+        int i = 0;
+        int j = c.size() - 1;
+
+        while (i <= j) {
+            if (c[i] == c[j]) {
+                i++;
+                j--;
+            } else {
+                return false;
+            }
+        }
+
+        return true;
+    }
+};
+
+
+
+
+/*      In C++, the isalnum() function is used to check if a character is alphanumeric, meaning it is either a letter (uppercase or lowercase) or a digit.  
+        In C++, the isalpha() function is used to check if a character is an alphabetic letter (either uppercase or lowercase).
+
+*/
