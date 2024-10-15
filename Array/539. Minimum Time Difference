@@ -1,0 +1,27 @@
+
+/*  My Solution of leetcode problem no 539. Minimum Time Difference*/
+
+class Solution {
+public:
+    int findMinDifference(vector<string>& timePoints) {
+        int n = timePoints.size();
+        vector<int>minutes(n);
+
+        for(int i=0;i<n;i++){
+            string time  = timePoints[i];
+            string hoursubstr = time.substr(0, 2);
+            string minutesubstr = time.substr(3);
+            int hourint = stoi(hoursubstr);
+            int minuteint = stoi(minutesubstr);
+            minutes[i] = hourint*60 + minuteint ; 
+        }
+
+        sort(minutes.begin() , minutes.end());
+        int result =INT_MAX;
+        for(int i=1;i<n ;i++){
+            result = min(result , minutes[i] - minutes[i-1]);
+        }
+        return min(result , (24*60 - minutes[n-1]) + minutes[0]);
+        
+    }
+};
