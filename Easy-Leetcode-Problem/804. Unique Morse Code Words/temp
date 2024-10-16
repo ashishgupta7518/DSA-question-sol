@@ -1,0 +1,32 @@
+
+
+
+/*  My Solution of Leetcode Problem 804. Unique Morse Code Words  */
+
+/* Link of Leetcode Problem  ===>>   https://leetcode.com/problems/unique-morse-code-words/description/  */
+
+
+
+class Solution {
+public:
+    int uniqueMorseRepresentations(vector<string>& words) {
+
+        vector<string> result = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+
+       unordered_set<string>st;
+
+       string temp = "";
+       for(auto word : words){
+        temp = "";
+        for(auto ch : word){
+            temp += result[ch - 'a'];
+        }
+        st.insert(temp);
+       }
+       return st.size();
+
+
+
+        
+    }
+};
