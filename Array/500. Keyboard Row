@@ -1,0 +1,94 @@
+
+
+
+/*  my solution of leetcode problem 500 .  Keyboard Row  */
+
+
+
+
+/*   1st solution   */
+/*   C++   */
+
+
+class Solution {
+public:
+    vector<string> findWords(vector<string>& words) {
+        string s1 = "qwertyuiop";
+        string s2 = "asdfghjkl";
+        string s3 = "zxcvbnm";
+        vector<string> ans;
+
+        map<char,int>mp;
+
+        for(auto &it :s1){
+            mp[it] =1;
+        }
+        for(auto &it :s2){
+            mp[it] =2;
+        }
+        for(auto &it :s3){
+            mp[it] =3;
+        }
+
+
+        for(auto &word : words){
+            int i;
+            for( i=1;i<word.size();i++){
+                if(mp[tolower(word[i])]!= mp[tolower(word[i-1])]){
+                    break;
+                }
+
+            }
+            if(i == word.size()){
+                ans.push_back(word);
+            }
+        }
+       return ans;
+    }
+};
+
+
+
+
+
+/*   2st solution   */
+/*   C++   */
+
+
+
+class Solution {
+public:
+    vector<string> findWords(vector<string>& words) {
+
+ unordered_set<char>s1 = {'q','w','e','r','t','y','u','i','o','p','Q','W','E','R','T','Y','U','I','O','P'};
+	    unordered_set<char>s2 = {'a','s','d','f','g','h','j','k','l','A','S','D','F','G','H','J','K','L'};
+	    unordered_set<char>s3 = {'z','x','c','v','b','n','m','Z','X','C','V','B','N','M'};
+vector<string>ans;
+        for(auto word : words){
+            bool c1 = true;
+            bool c2 = true;
+            bool c3 = true;
+           
+            for(char ch : word){
+  
+                if(s1.find(ch)== s1.end()){
+                    c1 = false;
+                }
+                if(s2.find(ch)== s2.end()){
+                    c2 = false;
+                }
+                if(s3.find(ch)== s3.end()){
+                    c3 = false;
+                }
+
+
+            }
+            if(c1 or c2 or c3){
+                ans.push_back(word);
+            }
+        }
+
+        return ans;
+        
+    }
+};
