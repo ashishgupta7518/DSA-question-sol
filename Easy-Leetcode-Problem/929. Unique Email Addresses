@@ -1,0 +1,40 @@
+/* Solution of Leetcode problem 929. Unique Email Addresses  */
+/* url  of Problem ===>>  https://leetcode.com/problems/unique-email-addresses/  */
+
+
+/* My c++ solution of problem  929. Unique Email Addresses */
+
+
+class Solution {
+public:
+    int numUniqueEmails(vector<string>& emails) {
+        unordered_set<string>S;
+        
+        for(auto word : emails){
+            bool localname = true;
+            string s = "";
+            for(int i=0;i<word.length() ;i++){
+                if(word[i]== '+' && localname){
+                    while(word[i] != '@'){
+                        i++;
+                    }
+                    localname = false;
+                }else if(word[i] == '.' && localname){
+                    continue;
+                }else if(word[i] == '@'){
+                    localname = false;
+
+                }
+                s+= word[i];
+
+            }
+            if(S.find(s) == S.end()){
+                S.insert(s);
+
+            }
+        }
+        return S.size();
+        
+        
+    }
+};
