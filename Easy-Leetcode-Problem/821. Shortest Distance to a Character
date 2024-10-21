@@ -1,0 +1,32 @@
+
+/* My C++ solution of Leetcode problem  821. Shortest Distance to a Character  */
+
+
+
+class Solution {
+public:
+    vector<int> shortestToChar(string s, char c) {
+        vector<int>ans;
+        vector<int>charIndex;
+        for(int i=0;i<s.size() ;i++){
+            if(s[i] == c){
+                charIndex.push_back(i);
+            }
+        }
+
+        for(int i=0;i<s.length();i++){
+            int min_index = INT_MAX;
+            int ele ;
+
+            for(int j=0;j<charIndex.size();j++){
+                ele = abs(charIndex[j] -i);
+                min_index = min(min_index , ele);
+
+            }
+             ans.push_back(min_index);
+        }
+        return ans;
+       
+        
+    }
+};
