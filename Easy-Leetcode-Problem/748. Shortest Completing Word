@@ -1,0 +1,36 @@
+
+
+/* My c++ solution of Leetcode problem  748. Shortest Completing Word */
+
+
+
+class Solution {
+public:
+    string shortestCompletingWord(string licensePlate, vector<string>& words) {
+       int minlen = INT_MAX; 
+        string target = "", ans;
+
+        for(char ch:licensePlate ){
+           if(tolower(ch) >= 'a' && tolower(ch) <= 'z') target += tolower(ch); 
+        
+        } 
+        sort(target.begin(), target.end());  
+
+        for(string word: words){
+            string temp = word;
+            sort(temp.begin(), temp.end());
+            int inx = 0;
+            for(int i=0;i<temp.size();i++){
+                if(temp[i] == target[inx]){
+                    inx++;
+                }
+            }
+            if(inx == target.size() && word.size() < minlen){
+                minlen = word.size();
+                ans=word;
+
+            }
+        }
+        return ans;
+    }
+};
