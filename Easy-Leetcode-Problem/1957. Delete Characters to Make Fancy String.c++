@@ -58,6 +58,47 @@ public:
 };
 
 
+/* BY using Stack */
+
+
+class Solution {
+public:
+    string makeFancyString(string s) {
+        string res;
+        stack<char>st;
+        int j=0,cnt=0;
+        while(j< s.size()){
+            if(st.size() == 0){
+                st.push(s[j]);
+                cnt++;
+            }else{
+                if(st.top() == s[j]){
+                    cnt++;
+                    if(cnt ==3){
+                        cnt--;
+                    }else{
+                        st.push(s[j]);
+                    }
+                }else{
+                    cnt=1;
+                    st.push(s[j]);
+                }
+            }
+            j++;
+
+        }
+        while(st.size() > 0){
+            res.push_back(st.top());
+            st.pop();
+        }
+        reverse(res.begin(),res.end());
+        return res;
+
+        
+    }
+};
+
+
 
 
 
